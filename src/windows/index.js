@@ -1,5 +1,5 @@
 import Terminal from '#windows/Terminal.jsx'
-
-export {Terminal}
+import Safari from '#windows/Safari.jsx'
+export {Terminal,Safari}
 
 
