@@ -144,9 +144,16 @@ import gsap from 'gsap';
 import { dockApps } from '#constants/index.js';
 import { Tooltip } from 'react-tooltip';
 import { useGSAP } from '@gsap/react';
+import useWindowStore from '#store/window.js';
 
 const Dock = () => {
   const dockRef = useRef(null);
+
+  const {
+    openWindow,
+    closeWindow,
+    windows,
+  } = useWindowStore();
 
   useGSAP(() => {
     const dock = dockRef.current;
@@ -229,8 +236,19 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = (id) => {
-    console.log('Opening app:', id);
+  const toggleApp = (id, canOpen) => {
+    if (!canOpen) return;
+
+    const appWindow = windows[id];
+
+    if (appWindow?.isOpen) {
+      closeWindow(id);
+    } else {
+      openWindow(id);
+    }
+
+
+    console.log(windows);
   };
 
   return (
@@ -240,7 +258,12 @@ const Dock = () => {
         className="dock-container"
       >
         {dockApps.map(
-          ({ id, name, icon, canOpen }) => (
+          ({
+            id,
+            name,
+            icon,
+            canOpen,
+          }) => (
             <div
               key={id}
               className="relative flex justify-center"
@@ -254,14 +277,18 @@ const Dock = () => {
                 data-tooltip-delay-show={0}
                 data-tooltip-delay-hide={0}
                 disabled={!canOpen}
-                onClick={() => toggleApp(id)}
+                onClick={() =>
+                  toggleApp(id, canOpen)
+                }
               >
                 <img
                   src={`/images/${icon}`}
                   alt={name}
                   loading="lazy"
                   className={
-                    canOpen ? '' : 'opacity-60'
+                    canOpen
+                      ? ''
+                      : 'opacity-60'
                   }
                 />
               </button>
