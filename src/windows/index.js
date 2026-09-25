@@ -1,6 +1,7 @@
 import Terminal from '#windows/Terminal.jsx'
 import Safari from '#windows/Safari.jsx'
 import Resume from '#windows/Resume.jsx'
-export {Terminal,Safari,Resume}
+import Finder from '#windows/Finder.jsx'
+export {Terminal,Safari,Resume,Finder}
 
 
