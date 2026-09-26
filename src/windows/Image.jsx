@@ -10,7 +10,7 @@ const Image = () => {
     const {name,imageUrl} = data;
   return (
     <>
-    <div className="window-header flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-200">
+    <div id="window-header">
         <WindowControls target="imgfile" />
         <h2 className='text-gray-400'>{name}</h2>
     </div>

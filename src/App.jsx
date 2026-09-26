@@ -2,7 +2,7 @@ import gsp from 'gsap'
 import {Draggable} from 'gsap/Draggable'
 
 import {Navbar, Welcome,Dock} from '#components/index.js'
-import {Terminal,Safari,Resume,Finder,TextWindow,ImageWindow} from '#windows'
+import {Terminal,Safari,Resume,Finder,TextWindow,ImageWindow,ContactWindow} from '#windows'
 
 gsp.registerPlugin(Draggable)
 
@@ -20,6 +20,7 @@ const App = () => {
         <Finder/>
         <TextWindow/>
         <ImageWindow/>
+        <ContactWindow/>
     </main>
   )
 }
