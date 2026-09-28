@@ -5,6 +5,7 @@ import {resolve,dirname} from 'path'
 import { fileURLToPath } from 'url'
 
 export default defineConfig({
+  base:'/MyPortfolio/',
   plugins: [react(),tailwindcss()],
   resolve: {
     alias: {
